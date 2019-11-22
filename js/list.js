@@ -2,7 +2,7 @@ $(() => {
   let li;
   phoneData.forEach(e => {
     li += `<li class="goods-list-item">
-        <a href="detail.html">
+        <a href="detail.html?${e.pID}">
           <div class="item-img">
             <img src="${e.imgSrc}" alt="">
           </div>
