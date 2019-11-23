@@ -98,25 +98,26 @@ $(()=>{
         let number=$(this).prev().val();
         $(this).prev().val(++number);
         let id=$(this).parents('.item').attr('data-id');
-        arr.forEach(e=>{
-            if(e.pID==id){
-                e.num=number
-            }
-        })
+        let obj = arr.find(e=>{
+            return e.pID == id;
+          });
+        obj.num=parseInt(number);
         Kits.setDate('cartData',arr);
         jisuan();
+        $(this).parents('.item').find('.computed').text(obj.num*obj.price);
     })
     $('.item-list').on('click','.reduce',function(){
         let number=$(this).next().val();
         $(this).next().val(--number);
         let id=$(this).parents('.item').attr('data-id');
-        arr.forEach(e=>{
-            if(e.pID==id){
-                e.num=number
-            }
-        })
+        let obj = arr.find(e=>{
+            return e.pID == id;
+          });
+        obj.num=parseInt(number);
         Kits.setDate('cartData',arr);
         jisuan();
+        $(this).parents('.item').find('.computed').text(obj.num*obj.price);
+
     })
 
 })
