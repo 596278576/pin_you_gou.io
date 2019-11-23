@@ -94,6 +94,17 @@ $(()=>{
     jisuan();
 
     //实现加减功能
-    
+    $('.item-list').on('click','.add',function(){
+        let number=$(this).prev().val();
+        $(this).prev().val(++number);
+        let id=$(this).parents('.item').attr('data-id');
+        arr.forEach(e=>{
+            if(e.pID==id){
+                e.num=number
+            }
+        })
+        Kits.setDate('cartData',arr);
+        jisuan();
+    })
 
 })
