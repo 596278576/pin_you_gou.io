@@ -59,17 +59,23 @@ $(()=>{
             e.isChecked=ckall;
         })
         Kits.setDate('cartData',arr);
+        jisuan();
     })
 
-    //实现点选控制全选
-    $('.item-ck').on('click',function(){
-        let ck=$(this).prop('checked');
+
+    $('.item-list').on('click','.item-ck',function(){
+        let ck=$('.item-ck').length==$('.item-ck:checked').length;
         $('.pick-all').prop('checked',ck);
+        let pid=$(this).parents('.item').attr('data-id');
+        let isChecked=$(this).prop('checked');
         arr.forEach(e=>{
-            e.isChecked=ck;
+            if(e.pID==pid){
+                e.isChecked=isChecked
+            }
         })
         Kits.setDate('cartData',arr);
-    });
+        jisuan();
+    })
 
     //实现总和计算功能
     function jisuan(){
@@ -88,4 +94,5 @@ $(()=>{
     jisuan();
 
     //实现加减功能
+
 })
