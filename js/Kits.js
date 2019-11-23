@@ -5,5 +5,5 @@ Kits.setDate=function(key,data){
 };
 Kits.getDate=function(key){
     let json=localStorage.getItem(key);
-    return JSON.parse(json)||[];
+    return JSON.parse(json) || [];
 }
