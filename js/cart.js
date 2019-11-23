@@ -120,4 +120,14 @@ $(()=>{
 
     })
 
+    //实现删除功能
+    $('.item').on('click','.item-del',function(){
+      confirm('确认删除吗');
+      $(this).parents('.item').remove()
+      let id=$(this).parents('.item').attr('data-id');
+      arr=arr.filter(e=>{
+        return e.pID!=id;
+      })
+      Kits.setDate('cartData',arr);
+    })
 })
