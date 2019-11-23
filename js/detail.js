@@ -6,5 +6,13 @@ $(()=>{
             $('.summary-price em').text(e.price);
             $('.preview-img img').attr('src',(e.imgSrc));
         }
+    });
+
+    $('.addshopcar').on('click',function(){
+        let num=$('.choose-number').val();
+        if(parseInt(num)==0||isNaN(num)||num.trim().length==0){
+            alert('不是数字');
+            return;
+        }
     })
 })
