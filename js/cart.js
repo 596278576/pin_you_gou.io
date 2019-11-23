@@ -122,12 +122,54 @@ $(()=>{
 
     //实现删除功能
     $('.item').on('click','.item-del',function(){
-      confirm('确认删除吗');
-      $(this).parents('.item').remove()
-      let id=$(this).parents('.item').attr('data-id');
-      arr=arr.filter(e=>{
-        return e.pID!=id;
-      })
-      Kits.setDate('cartData',arr);
+      let r=confirm('确认删除吗');
+      if(r){
+        $(this).parents('.item').remove()
+        let id=$(this).parents('.item').attr('data-id');
+        arr=arr.filter(e=>{
+          return e.pID!=id;
+        })
+        Kits.setDate('cartData',arr);
+      }
+
     })
+
+    //手动输入数字
+    $('.item').on('blur','.number',function(){
+      let num=$(this).prop('value');
+      if (num.trim().length === 0 || isNaN(num) || parseInt(num) <= 0) {
+        alert('商品数量不正确，请输入一个阿拉伯数字');
+        return;
+      }
+      num=parseInt(num);
+      let id=$(this).parents('.item').attr('data-id');
+      let obj=arr.find(e=>{
+        return e.pID==id;
+      })
+      obj.num=num;
+      Kits.setDate('cartData',arr);
+      jisuan();
+      $(this).parents('.item').find('.computed').text(obj.num*obj.price);
+    })
+
+    // 回车键确认数量
+    $('.item').on('keyup','.number',function(e){
+      if(e.keyCode==13){
+        let num=$(this).prop('value');
+        if (num.trim().length === 0 || isNaN(num) || parseInt(num) <= 0) {
+          alert('商品数量不正确，请输入一个阿拉伯数字');
+          return;
+        }
+        num=parseInt(num);
+        let id=$(this).parents('.item').attr('data-id');
+        let obj=arr.find(e=>{
+          return e.pID==id;
+        })
+        obj.num=num;
+        Kits.setDate('cartData',arr);
+        jisuan();
+        $(this).parents('.item').find('.computed').text(obj.num*obj.price);
+      }
+    })
+
 })
