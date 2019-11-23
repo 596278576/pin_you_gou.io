@@ -13,6 +13,7 @@ $(()=>{
         if(parseInt(num)==0||isNaN(num)||num.trim().length==0){
             alert('不是数字');
             return;
-        }
+        };
+        let arr=Kits.getDate('cartData');
     })
 })
