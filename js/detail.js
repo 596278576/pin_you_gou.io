@@ -1,9 +1,10 @@
 $(()=>{
     // 获取id
     let id=location.search.substring(1);
+    
     // 判断对应的id
-    let shuju=phoneData.find(e=>{
-        return e.pID=id;
+    let shuju=phoneData.find(e=>{      
+        return e.pID==id;
     })
     // 修改对应id的数据
             $('.sku-name').text(shuju.name);
@@ -25,7 +26,7 @@ $(()=>{
         
         //判断是否存在该商品
         let pd=arr.find(e=>{
-            return e.pID=id;
+            return e.pID==id;
         });
         // 如果存在数量增加
         num=parseInt(num);
@@ -38,7 +39,8 @@ $(()=>{
                 name:shuju.name,
                 price:shuju.price,
                 imgSrc:shuju.imgSrc,
-                num:num
+                num:num,
+                isChecked:true
             }
             arr.push(obj);
         }
