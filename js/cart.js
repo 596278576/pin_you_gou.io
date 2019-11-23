@@ -106,5 +106,17 @@ $(()=>{
         Kits.setDate('cartData',arr);
         jisuan();
     })
+    $('.item-list').on('click','.reduce',function(){
+        let number=$(this).next().val();
+        $(this).next().val(--number);
+        let id=$(this).parents('.item').attr('data-id');
+        arr.forEach(e=>{
+            if(e.pID==id){
+                e.num=number
+            }
+        })
+        Kits.setDate('cartData',arr);
+        jisuan();
+    })
 
 })
